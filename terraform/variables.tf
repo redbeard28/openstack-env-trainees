@@ -3,11 +3,11 @@
 #}
 
 variable "image" {
-  default = "cirros-0.3.4-x86_64-uec-ramdisk"
+  default = "ubuntu-16.04-x64"
 }
 
 variable "flavor" {
-  default = "m1.small"
+  default = "Small"
 }
 
 variable "ssh_key_file" {
@@ -21,5 +21,5 @@ variable "ssh_user_name" {
 variable "external_gateway" {}
 
 variable "pool" {
-  default = "public"
+  default = "internet_floating_net"
 }
