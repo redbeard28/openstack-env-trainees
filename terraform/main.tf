@@ -1,16 +1,6 @@
-#######################################################
-#
-#	Deploy configuration
-#
-#		by J.CUADRADO 15/02/2017
-#
-########################################################
-# availability_zone = "AZ1"
-
-
-resource "openstack_compute_keypair_v2" "demo_key" {
-  name = "my-keypair"
-  public_key = "${var.openstack_jcu_pub_key}"
+resource "openstack_compute_keypair_v2" "terraform" {
+  name       = "terraform"
+  public_key = "${file("${var.ssh_key_file}.pub")}"
 }
 
 resource "openstack_networking_network_v2" "terraform" {
@@ -36,12 +26,6 @@ resource "openstack_networking_router_interface_v2" "terraform" {
   router_id = "${openstack_networking_router_v2.terraform.id}"
   subnet_id = "${openstack_networking_subnet_v2.terraform.id}"
 }
-
-resource "openstack_compute_floatingip_v2" "terraform" {
-  pool       = "${var.pool}"
-  depends_on = ["openstack_networking_router_interface_v2.terraform"]
-}
-
 
 resource "openstack_compute_secgroup_v2" "terraform" {
   name        = "terraform"
@@ -69,15 +53,33 @@ resource "openstack_compute_secgroup_v2" "terraform" {
   }
 }
 
-resource "openstack_compute_instance_v2" "REDBEARD28" {
-  name = "REDBEARD28"
-  image_id = "${var.openstack_centos7_image_id}"
-  availability_zone = "nova"
-  flavor_id = "1"
-  key_pair = "${var.openstack_keypair}"
-  security_groups = ["Groupe_Securite"]
+resource "openstack_compute_floatingip_v2" "terraform" {
+  pool       = "${var.pool}"
+  depends_on = ["openstack_networking_router_interface_v2.terraform"]
+}
+
+resource "openstack_compute_instance_v2" "terraform" {
+  name            = "terraform"
+  image_name      = "${var.image}"
+  flavor_name     = "${var.flavor}"
+  key_pair        = "${openstack_compute_keypair_v2.terraform.name}"
+  security_groups = ["${openstack_compute_secgroup_v2.terraform.name}"]
+  floating_ip     = "${openstack_compute_floatingip_v2.terraform.address}"
+
   network {
     uuid = "${openstack_networking_network_v2.terraform.id}"
   }
-  floating_ip = "${openstack_compute_floatingip_v2.terraform.address}"
+
+  provisioner "remote-exec" {
+    connection {
+      user     = "${var.ssh_user_name}"
+      private_key = "${file(var.ssh_key_file)}"
+    }
+
+    inline = [
+      "sudo apt-get -y update",
+      "sudo apt-get -y install nginx",
+      "sudo service nginx start",
+    ]
+  }
 }
