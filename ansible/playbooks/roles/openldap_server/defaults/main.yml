@@ -1,0 +1,18 @@
+---
+
+#The domain prefix for ldap
+openldap_server_domain_name: geekland.com
+
+#This is the password for admin for openldap 
+openldap_server_rootpw: my_password
+
+#The self signed ssl parameters
+openldap_server_country: FR
+openldap_server_state: ile de france
+openldap_server_location: paris
+openldap_server_organization: IT
+
+openldap_server_enable_ssl: true
+
+#The ldif file
+openldap_server_ldif: domain.ldif
