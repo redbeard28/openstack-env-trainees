@@ -88,10 +88,11 @@ resource "openstack_compute_instance_v2" "terraform" {
     inline = [
       "sudo setenforce permissive",
       "sudo sed -i 's/enforcing/permissive/g' /etc/sysconfig/selinux",
-#      "sudo yum -y update",
-#      "sudo yum install -y epel-release",
-#      "sudo yum install -y ansible",
-#      "sudo yum install -y git",
+      "sudo yum -y update",
+      "sudo yum install -y epel-release",
+      "sudo yum install -y ansible",
+      "sudo yum install -y git",
+
     ]
   }
 }
