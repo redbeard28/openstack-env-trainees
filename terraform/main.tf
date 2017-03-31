@@ -92,6 +92,7 @@ resource "openstack_compute_instance_v2" "terraform" {
       "sudo yum install -y epel-release",
       "sudo yum install -y ansible",
       "sudo yum install -y git",
+
     ]
   }
 }
