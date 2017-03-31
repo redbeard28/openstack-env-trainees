@@ -1,3 +1,12 @@
+#######################################################
+#
+#	Main configuration
+#
+#		by J.CUADRADO 31/03/2017
+#
+########################################################
+# v1  - Création
+
 resource "openstack_compute_keypair_v2" "terraform" {
   name       = "terraform"
   public_key = "${file("${var.ssh_key_file}.pub")}"
@@ -77,9 +86,12 @@ resource "openstack_compute_instance_v2" "terraform" {
     }
 
     inline = [
-      "sudo apt-get -y update",
-      "sudo apt-get -y install nginx",
-      "sudo service nginx start",
+      "sudo setenforce permissive",
+      "sudo sed -i 's/enforcing/permissive/g' /etc/sysconfig/selinux",
+#      "sudo yum -y update",
+#      "sudo yum install -y epel-release",
+#      "sudo yum install -y ansible",
+#      "sudo yum install -y git",
     ]
   }
 }

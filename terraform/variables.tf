@@ -1,13 +1,9 @@
-#variable "image" {
-#  default = "Ubuntu 14.04"
-#}
-
 variable "image" {
-  default = "ubuntu-16.04-x64"
+  default = "centos-7-x86_64"
 }
 
 variable "flavor" {
-  default = "Small"
+  default = "Large"
 }
 
 variable "ssh_key_file" {
@@ -15,10 +11,12 @@ variable "ssh_key_file" {
 }
 
 variable "ssh_user_name" {
-  default = "ubuntu"
+  default = "centos"
 }
 
-variable "external_gateway" {}
+variable "external_gateway" {
+  default = "45306006-f2c9-48bc-a029-028cc3b0a86c"
+}
 
 variable "pool" {
   default = "internet_floating_net"
