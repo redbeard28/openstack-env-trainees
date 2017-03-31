@@ -1,6 +1,6 @@
-variable "image" {
-  default = "Ubuntu 14.04"
-}
+#variable "image" {
+#  default = "Ubuntu 14.04"
+#}
 
 variable "image" {
   default = "cirros-0.3.4-x86_64-uec-ramdisk"
