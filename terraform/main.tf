@@ -88,22 +88,14 @@ resource "openstack_compute_instance_v2" "terraform" {
     inline = [
       "sudo setenforce permissive",
       "sudo sed -i 's/enforcing/permissive/g' /etc/sysconfig/selinux",
-      "sudo yum -y update",
+#      "sudo yum -y update",
       "sudo yum install -y epel-release",
       "sudo yum install -y ansible",
       "sudo yum install -y git",
-<<<<<<< HEAD
-<<<<<<< HEAD
       " mkdir ~/repo",
       "git clone https://github.com/redbeard28/openstack-env-trainees.git ~/repo/ -b traineesv1",
       "cd ~/repo/openstack-env-trainees",
-      "ansible-playbook -i 'localhost,' -c local install.yml"
-=======
-
->>>>>>> b283473fcd25460d7812b76db8485f30f7a208c5
-=======
-
->>>>>>> 6a92237b7188e8ad920a86e55d356969a0596ebf
+      "ansible-playbook -i 'localhost,' -c local playbooks/install.yml"
     ]
   }
 }
