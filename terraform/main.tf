@@ -77,6 +77,7 @@ resource "openstack_compute_instance_v2" "terraform" {
 
   network {
     uuid = "${openstack_networking_network_v2.terraform.id}"
+    fixed_ip_v4 = "192.168.199.5"
   }
 
   provisioner "remote-exec" {
