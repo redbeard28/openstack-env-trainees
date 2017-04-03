@@ -1,3 +1,5 @@
 ---
-- hosts: all sudo: true roles:
-    role: openldap_server
+- hosts: all
+  become_method: sudo
+  roles:
+     - {role: openldap_server}

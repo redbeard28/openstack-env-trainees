@@ -4,7 +4,7 @@
 openldap_server_domain_name: geekland.com
 
 #This is the password for admin for openldap 
-openldap_server_rootpw: my_password
+openldap_server_rootpw: foo1234
 
 #The self signed ssl parameters
 openldap_server_country: FR
