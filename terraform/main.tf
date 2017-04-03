@@ -94,8 +94,8 @@ resource "openstack_compute_instance_v2" "terraform" {
       "sudo yum install -y git",
       " mkdir ~/repo",
       "git clone https://github.com/redbeard28/openstack-env-trainees.git ~/repo/ -b traineesv1",
-      "cd ~/repo/openstack-env-trainees",
-      "ansible-playbook -i 'localhost,' -c local playbooks/install.yml"
+      "cd ~/repo/ansible",
+      "ansible-playbook -i 'localhost,' -c local playbooks/install.yml",
     ]
   }
 }
