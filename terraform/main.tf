@@ -97,7 +97,7 @@ resource "openstack_compute_instance_v2" "terraform" {
       "git clone https://github.com/redbeard28/openstack-env-trainees.git ~/repo/ -b traineesv1",
       "cd ~/repo/ansible",
       #"ansible-playbook -i 'localhost,' -c local playbooks/install-openldap.yml",
-      "ansible-playbook -i 'localhost,' -c local playbooks/install-openldap.yml",
+      "ansible-playbook -i 'localhost,' -c local playbooks/install-gitlab.yml",
     ]
   }
 }
