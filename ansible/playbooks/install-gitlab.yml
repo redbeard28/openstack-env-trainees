@@ -4,4 +4,4 @@
   vars:
     gitlab_restart_handler_failed_when: false
   roles:
-     - {role: gitlab}
+     - {role: gitlab_server}
