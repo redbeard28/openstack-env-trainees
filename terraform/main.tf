@@ -89,7 +89,7 @@ resource "openstack_compute_instance_v2" "terraform" {
 
   provisioner "remote-exec" {
     connection {
-      user     = "${var.ssh_user_name}"cd .g
+      user     = "${var.ssh_user_name}"
       private_key = "${file(var.ssh_key_file)}"
     }
 
@@ -105,6 +105,7 @@ resource "openstack_compute_instance_v2" "terraform" {
       "cd ~/repo/ansible",
       #"ansible-playbook -i 'localhost,' -c local playbooks/install-openldap.yml",
       "ansible-playbook -i 'localhost,' -c local playbooks/install-gitlab.yml",
+      "ansible-playbook -i 'localhost,' -c local playbooks/install-postfixV2.yml",
     ]
   }
 }
