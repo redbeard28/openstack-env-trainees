@@ -55,6 +55,13 @@ resource "openstack_compute_secgroup_v2" "terraform" {
   }
 
   rule {
+    from_port   = 443
+    to_port     = 443
+    ip_protocol = "tcp"
+    cidr        = "0.0.0.0/0"
+  }
+  
+  rule {
     from_port   = -1
     to_port     = -1
     ip_protocol = "icmp"
@@ -77,11 +84,12 @@ resource "openstack_compute_instance_v2" "terraform" {
 
   network {
     uuid = "${openstack_networking_network_v2.terraform.id}"
+    fixed_ip_v4 = "192.168.199.5"
   }
 
   provisioner "remote-exec" {
     connection {
-      user     = "${var.ssh_user_name}"
+      user     = "${var.ssh_user_name}"cd .g
       private_key = "${file(var.ssh_key_file)}"
     }
 
@@ -92,7 +100,11 @@ resource "openstack_compute_instance_v2" "terraform" {
       "sudo yum install -y epel-release",
       "sudo yum install -y ansible",
       "sudo yum install -y git",
-
+      " mkdir ~/repo",
+      "git clone https://github.com/redbeard28/openstack-env-trainees.git ~/repo/ -b traineesv1",
+      "cd ~/repo/ansible",
+      #"ansible-playbook -i 'localhost,' -c local playbooks/install-openldap.yml",
+      "ansible-playbook -i 'localhost,' -c local playbooks/install-gitlab.yml",
     ]
   }
 }

@@ -1,0 +1,27 @@
+---
+- name: Ensure postfix is installed (RedHat).
+  yum: name=postfix state=installed
+  when: ansible_os_family == 'RedHat'
+
+- name: Ensure mailx is installed (RedHat).
+  yum: name=mailx state=installed
+  when: ansible_os_family == 'RedHat'
+
+- name: Ensure cyrus-sasl is installed (RedHat).
+  yum: name=cyrus-sasl state=installed
+  when: ansible_os_family == 'RedHat'
+
+- name: Ensure cyrus-sasl-plain is installed (RedHat).
+  yum: name=cyrus-sasl-plain state=installed
+  when: ansible_os_family == 'RedHat'
+
+- name: Ensure postfix is installed (Debian).
+  apt: name=postfix state=installed
+  when: ansible_os_family == 'Debian'
+
+- name: Ensure mailutils is installed (Debian).
+  apt: name=mailutils state=installed
+  when: ansible_os_family == 'Debian'
+  
+- name: Ensure postfix is started and enabled at boot.
+  service: name=postfix state=started enabled=yes
