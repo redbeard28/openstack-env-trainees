@@ -6,7 +6,13 @@
   - postfix
   - ca-certificates
   - mailx
+  - mutt
+  - cyrus-sasl
+  - cyrus-sasl-plain
 
 - name: Install DKIM requirements (RedHat)
   yum: name=opendkim
   when: postfix_dkim
+
+- name: Ensure postfix is started and enabled at boot.
+  service: name=postfix state=started enabled=yes
