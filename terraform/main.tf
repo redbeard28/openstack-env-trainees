@@ -55,6 +55,13 @@ resource "openstack_compute_secgroup_v2" "terraform" {
   }
 
   rule {
+    from_port   = 443
+    to_port     = 443
+    ip_protocol = "tcp"
+    cidr        = "0.0.0.0/0"
+  }
+  
+  rule {
     from_port   = -1
     to_port     = -1
     ip_protocol = "icmp"
@@ -82,7 +89,7 @@ resource "openstack_compute_instance_v2" "terraform" {
 
   provisioner "remote-exec" {
     connection {
-      user     = "${var.ssh_user_name}"
+      user     = "${var.ssh_user_name}"cd .g
       private_key = "${file(var.ssh_key_file)}"
     }
 

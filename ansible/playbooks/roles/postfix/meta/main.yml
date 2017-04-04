@@ -1,0 +1,19 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: redbeard28
+  description: Postfix role for RedHat/CentOS and Debian/Ubuntu.
+  company: "Redbeard-Consulting"
+  license: "license (BSD, MIT)"
+  min_ansible_version: 2.2
+  platforms:
+    - name: Centos
+      versions:
+      - 7
+    - name: Debian
+      versions:
+      - all
+    - name: Ubuntu
+      versions:
+      - 16.04
