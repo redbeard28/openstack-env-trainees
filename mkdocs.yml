@@ -6,6 +6,6 @@ site_author: Jeremie CUADRADO aka redbeard28
 
 theme: readthedocs
 pages:
-  - Home: index.md
-  - Prequisits: prequisits.md
-  - Tested OS: tested_os.md
+  - [ 'docs/index.md', 'Home' ]
+  - [ 'docs/prequisits.md', 'Home', 'Prequisits' ]
+  - [ 'docs/tested_os.md', 'Home', 'Tested for' ]
