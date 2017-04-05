@@ -1,0 +1,13 @@
+site_name: OpenStack Environnement for trainees
+site_url: http://www.redbeard-consulting.fr
+repo_url: https://github.com/redbeard28/openstack-env-trainees
+site_description: Build an OpenStack env for my trainees.
+site_author: Jeremie CUADRADO aka redbeard28
+
+theme: readthedocs
+pages:
+  - [ 'index.md', 'Home' ]
+  - [ 'prequisits.md', 'Home', 'Prequisits' ]
+  - [ 'tested_os.md', 'Home', 'Tested for' ]
+  - [ 'license.md', 'About', 'License' ]
+  - [ 'about.md', 'About', 'about.md' ]

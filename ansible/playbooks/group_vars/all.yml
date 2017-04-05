@@ -1,0 +1,1 @@
+dynamic_data_store: {{ ansible_conf_path }}/data/dynamic

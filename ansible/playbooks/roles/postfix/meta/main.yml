@@ -1,0 +1,22 @@
+---
+
+dependencies: []
+
+galaxy_info:
+  author: redbeard28
+  company: REDBEARD-CONSULTING
+  description: Postfix role for ansible
+  license: GNU v3
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  - name: RedHat
+    versions:
+    - all
+  - name: CentOS
+    versions:
+    - all
+  categories:
+  - system
+  - networking

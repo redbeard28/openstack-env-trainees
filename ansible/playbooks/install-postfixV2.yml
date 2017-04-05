@@ -1,0 +1,11 @@
+---
+- hosts: all
+
+  roles:
+    - postfix
+
+  vars:
+    # Example configuration for gmail
+    postfix_relayhost: "[smtp.gmail.com]:587"
+    postfix_smtp_sasl_user: phenix-runops@gmail.com
+    postfix_smtp_sasl_password: mypassword

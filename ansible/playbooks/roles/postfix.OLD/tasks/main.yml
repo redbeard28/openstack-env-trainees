@@ -1,0 +1,19 @@
+---
+- name: Ensure postfix is installed (RedHat).
+  yum: name={{ item }} state=installed
+  when: ansible_os_family == 'RedHat'
+  with_items: 
+    - postfix
+    - mailx
+    - cyrus-sasl
+    - cyrus-sasl-plain
+
+- name: Ensure postfix is installed (Debian).
+  apt: name=postfix state=installed
+  when: ansible_os_family == 'Debian'
+  with_items: 
+    - postfix
+    - mailutils
+
+- name: Ensure postfix is started and enabled at boot.
+  service: name=postfix state=started enabled=yes

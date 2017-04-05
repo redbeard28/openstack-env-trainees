@@ -1,0 +1,43 @@
+---
+
+- name: Ensure /etc/postfix directory is owned by root user
+  file: path=/etc/postfix owner=root
+  notify: postfix restart
+
+- name: Configure postfix pt. 1
+  template: src={{item}}.j2 dest=/etc/postfix/{{item}} owner=root group=root mode=0644
+  notify: postfix restart
+  with_items:
+  - main.cf
+  - master.cf
+
+- name: Configure postfix pt. 2
+  template: src=sasl_passwd.j2 dest=/etc/postfix/sasl_passwd owner=root group=root mode=0600
+  register: _postfix_sasl_passwd
+  notify: postfix restart
+
+- name: Configure postfix pt. 3
+  command: /usr/sbin/postmap /etc/postfix/sasl_passwd
+  when: _postfix_sasl_passwd.changed
+
+- name: Configure postfix pt. 4
+  template: src=generic.j2 dest=/etc/postfix/generic owner=root group=root mode=0644
+  register: _postfix_generic
+  notify: postfix restart
+
+- name: Configure postfix pt. 5
+  command: /usr/sbin/postmap /etc/postfix/generic
+  when: _postfix_generic is defined and _postfix_generic.changed
+
+- name: Configure postfix pt. 6
+  command: /usr/sbin/postaliases /etc/aliases creates=/etc/aliases.db
+
+- name: Configure postfix local user relay
+  template: src=virtual.j2 dest=/etc/postfix/virtual-pcre owner=root group=root mode=0644
+  notify: postfix restart
+  when: postfix_local_user_relay_address != ""
+
+- name: Configure postfix sender canonical maps
+  template: src=sender_canonical_maps.j2 dest=/etc/postfix/sender_canonical_maps
+  when: postfix_rewrite_sender_address != ""
+  notify: postfix restart
