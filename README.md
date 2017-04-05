@@ -1,4 +1,9 @@
-# openstack-env-trainees
+<h1>
+  <span>Create an OpenStack env for my trainees</span>
+  <a href='http://openstack-env-trainees.readthedocs.io/en/latest/?badge=latest'>
+    <img src='https://readthedocs.org/projects/openstack-env-trainees/badge/?version=latest' alt='Documentation Status' />
+  </a>
+</h1>
 
 ## Object
 This repo is used by myself to deploy an integral env for my trainees.
