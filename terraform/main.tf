@@ -108,3 +108,20 @@ resource "openstack_compute_instance_v2" "terraform" {
     ]
   }
 }
+
+######## ELASTIC SERVERS ########
+resource "openstack_compute_instance_v2" "node" {
+  count = "${var.elastic}"
+  name            = "node-${count.index}"
+  image_name      = "${var.image}"
+  flavor_name     = "${var.flavor}"
+  key_pair        = "${openstack_compute_keypair_v2.terraform.name}"
+  security_groups = ["${openstack_compute_secgroup_v2.terraform.name}"]
+  floating_ip     = "${openstack_compute_floatingip_v2.terraform.address}"
+
+  network {
+    uuid = "${openstack_networking_network_v2.terraform.id}"
+    fixed_ip_v4 = "192.168.199.2${count.index}"
+  }
+
+}

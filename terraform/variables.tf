@@ -24,4 +24,8 @@ variable "pool" {
   default = "internet_floating_net"
 }
 
+variable "elastic" {
+  default ="3"
+}
+
 variable "os_name" {}
