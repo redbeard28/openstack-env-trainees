@@ -1,8 +1,13 @@
 ---
+<<<<<<< HEAD
+=======
+
+>>>>>>> 107ce1d5954b6410f1d843e26c05f154ca3cb2fd
 dependencies: []
 
 galaxy_info:
   author: redbeard28
+<<<<<<< HEAD
   description: Postfix role for RedHat/CentOS and Debian/Ubuntu.
   company: "Redbeard-Consulting"
   license: "license (BSD, MIT)"
@@ -17,3 +22,21 @@ galaxy_info:
     - name: Ubuntu
       versions:
       - 16.04
+=======
+  company: REDBEARD-CONSULTING
+  description: Postfix role for ansible
+  license: GNU v3
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  - name: RedHat
+    versions:
+    - all
+  - name: CentOS
+    versions:
+    - all
+  categories:
+  - system
+  - networking
+>>>>>>> 107ce1d5954b6410f1d843e26c05f154ca3cb2fd

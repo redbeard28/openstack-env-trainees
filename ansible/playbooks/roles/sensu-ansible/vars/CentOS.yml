@@ -1,0 +1,7 @@
+---
+# vars/CentOS.yml: Variables for CentOS
+# Defaults are defined in vars/default.yml
+
+# Sensu/Uchiwa user/group/service properties
+sensu_user_name: root
+sensu_group_name: root

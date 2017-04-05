@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 - name: Ensure postfix is installed (RedHat).
   yum: name=postfix state=installed
   when: ansible_os_family == 'RedHat'
@@ -25,3 +26,9 @@
   
 - name: Ensure postfix is started and enabled at boot.
   service: name=postfix state=started enabled=yes
+=======
+
+- include: postfix.yml
+  when: postfix_enabled
+  tags: [postfix]
+>>>>>>> 107ce1d5954b6410f1d843e26c05f154ca3cb2fd

@@ -1,5 +1,5 @@
 variable "image" {
-  default = "centos-7-x86_64"
+  default = "CentOS-7-x86_64-1702"
 }
 
 variable "flavor" {
