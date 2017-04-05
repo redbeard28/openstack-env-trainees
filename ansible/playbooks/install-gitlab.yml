@@ -1,0 +1,7 @@
+---
+- hosts: all
+  become_method: sudo
+  vars:
+    gitlab_restart_handler_failed_when: false
+  roles:
+     - {role: gitlab_server}
