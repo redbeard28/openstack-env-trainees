@@ -1,5 +1,6 @@
 variable "image" {
-  default = "CentOS-7-x86_64-1702"
+#  default = "CentOS-7-x86_64-1702"
+  default = "ubuntu-16.04-x64"
 }
 
 variable "flavor" {
@@ -11,7 +12,8 @@ variable "ssh_key_file" {
 }
 
 variable "ssh_user_name" {
-  default = "centos"
+#  default = "centos"
+  default = "ubuntu"
 }
 
 variable "external_gateway" {
@@ -21,3 +23,5 @@ variable "external_gateway" {
 variable "pool" {
   default = "internet_floating_net"
 }
+
+variable "os_name" {}

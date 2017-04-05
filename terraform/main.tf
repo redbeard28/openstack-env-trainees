@@ -87,25 +87,24 @@ resource "openstack_compute_instance_v2" "terraform" {
     fixed_ip_v4 = "192.168.199.5"
   }
 
+  provisioner "file" {
+    connection {
+      user     = "${var.ssh_user_name}"
+      private_key = "${file(var.ssh_key_file)}"
+    }
+    source      = "bootstrapbastion-${var.os_name}.sh"
+    destination = "~/bootstrapbastion.sh"
+  }
+    
+    
   provisioner "remote-exec" {
     connection {
       user     = "${var.ssh_user_name}"
       private_key = "${file(var.ssh_key_file)}"
     }
-
     inline = [
-      "sudo setenforce permissive",
-      "sudo sed -i 's/enforcing/permissive/g' /etc/sysconfig/selinux",
-      "sudo yum -y update",
-      "sudo yum install -y epel-release",
-      "sudo yum install -y ansible",
-      "sudo yum install -y git",
-      " mkdir ~/repo",
-      "git clone https://github.com/redbeard28/openstack-env-trainees.git ~/repo/ -b traineesv1",
-      "cd ~/repo/ansible",
-      #"ansible-playbook -i 'localhost,' -c local playbooks/install-openldap.yml",
-      "ansible-playbook -i 'localhost,' -c local playbooks/install-gitlab.yml",
-      "ansible-playbook -i 'localhost,' -c local playbooks/install-postfixV2.yml",
+      "chmod 755 ~/bootstrapbastion.sh",
+      "~/bootstrapbastion.sh",
     ]
   }
 }
