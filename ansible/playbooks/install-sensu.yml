@@ -1,4 +1,23 @@
 ---
 - hosts: all
+  vars:
+      sensu_masters: "ubuntu"
+      rabbitmq_servers: "ubuntu"
+      redis_servers: "ubuntu"
+      dynamic_data_store: "data/dynamic"
+      rabbitmq_host: "192.168.199.5"
+      rabbitmq_server: true
+      redis_host: "192.168.199.5"
+      redis_server: true
+      sensu_api_host: "192.168.199.5"
+      sensu_api_user_name: "admin"
+      sensu_api_password: "admin"
+      sensu_include_plugins: false
+      sensu_include_dashboard: true
+      sensu_master: true
+      uchiwa_dc_name: "vagrant"
+      uchiwa_users: [{"username": "admin", "password": "admin"}]
+
   roles:
-     - {role: sensu-ansible, sensu_master: true, sensu_include_dashboard: true}
+     #- {role: sensu-ansible, sensu_master: true, sensu_include_dashboard: true}
+     - {role: sensu-ansible}

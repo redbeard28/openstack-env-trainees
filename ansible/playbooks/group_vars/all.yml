@@ -1,1 +1,2 @@
-dynamic_data_store: {{ ansible_conf_path }}/data/dynamic
+ansible_conf_path:  '~/repo/ansible'
+dynamic_data_store: '{{ ansible_conf_path }}/data/dynamic'
