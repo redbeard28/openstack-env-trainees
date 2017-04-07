@@ -15,13 +15,6 @@
   args:
     chdir: /usr/local/src/noip-2.1.9-1/
 
-# Needs expect command
-#- name: Make install 
-# become: yes
-#  shell: make install
-#  args:
-#    chdir: /usr/local/src/noip-2.1.9-1/
- 
 - name: Copy Compiled noip2 binarie
   become: yes
   copy: src=noip2 dest=/usr/local/bin/noip2
