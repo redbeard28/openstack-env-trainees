@@ -69,7 +69,12 @@ resource "openstack_compute_secgroup_v2" "terraform" {
   }
 }
 
-resource "openstack_compute_floatingip_v2" "terraform" {
+resource "openstack_compute_floatingip_v2" "bastion_ip" {
+  pool       = "${var.pool}"
+  depends_on = ["openstack_networking_router_interface_v2.terraform"]
+}
+
+resource "openstack_compute_floatingip_v2" "webserv_ip" {
   pool       = "${var.pool}"
   depends_on = ["openstack_networking_router_interface_v2.terraform"]
 }
@@ -80,8 +85,7 @@ resource "openstack_compute_instance_v2" "terraform" {
   flavor_name     = "${var.flavor}"
   key_pair        = "${openstack_compute_keypair_v2.terraform.name}"
   security_groups = ["${openstack_compute_secgroup_v2.terraform.name}"]
-  floating_ip     = "${openstack_compute_floatingip_v2.terraform.address}"
-
+  floating_ip     = "${openstack_compute_floatingip_v2.bastion_ip.address}"
   network {
     uuid = "${openstack_networking_network_v2.terraform.id}"
     fixed_ip_v4 = "192.168.199.5"
@@ -122,4 +126,39 @@ resource "openstack_compute_instance_v2" "node" {
     fixed_ip_v4 = "192.168.199.2${count.index}"
   }
 
+}
+
+######## WebServer  ########
+resource "openstack_compute_instance_v2" "webserver" {
+  name            = "webserver"
+  image_name      = "${var.image}"
+  flavor_name     = "${var.flavor}"
+  key_pair        = "${openstack_compute_keypair_v2.terraform.name}"
+  security_groups = ["${openstack_compute_secgroup_v2.terraform.name}"]
+  floating_ip     = "${openstack_compute_floatingip_v2.webserv_ip.address}"
+  
+  network {
+    uuid = "${openstack_networking_network_v2.terraform.id}"
+    fixed_ip_v4 = "192.168.199.10"
+  }
+  provisioner "file" {
+    connection {
+      user     = "${var.ssh_user_name}"
+      private_key = "${file(var.ssh_key_file)}"
+    }
+    source      = "bootstrapbastion-${var.os_name}.sh"
+    destination = "~/bootstrapbastion.sh"
+  }
+    
+    
+  provisioner "remote-exec" {
+    connection {
+      user     = "${var.ssh_user_name}"
+      private_key = "${file(var.ssh_key_file)}"
+    }
+    inline = [
+      "chmod 755 ~/bootstrapbastion.sh",
+      "~/bootstrapbastion.sh",
+    ]
+  }
 }
