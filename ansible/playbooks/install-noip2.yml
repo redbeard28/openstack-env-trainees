@@ -1,0 +1,4 @@
+---
+- hosts: bastion
+  roles:
+     - {role: noip2}

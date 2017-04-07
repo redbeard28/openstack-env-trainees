@@ -1,0 +1,50 @@
+---
+- name: Download noip2 duc
+  get_url: url=http://www.no-ip.com/client/linux/noip-duc-linux.tar.gz dest=/usr/local/src/ mode=0440
+
+- stat: path=/usr/local/src/noip-duc-linux.tar.gz
+  register: noipduc_tar_stat
+
+- name:  Extract no-ip udc tar
+  when:  noipduc_tar_stat.exists == True 
+  unarchive: src=/usr/local/src/noip-duc-linux.tar.gz dest=/usr/local/src/ copy=no owner={{ username }} group={{ username }}
+
+- name: Make 
+  become: yes
+  shell: make
+  args:
+    chdir: /usr/local/src/noip-2.1.9-1/
+
+# Needs expect command
+#- name: Make install 
+# become: yes
+#  shell: make install
+#  args:
+#    chdir: /usr/local/src/noip-2.1.9-1/
+ 
+- name: Copy Compiled noip2 binarie
+  become: yes
+  copy: src=noip2 dest=/usr/local/bin/noip2
+  
+- name: Copy Compiled noip2 config
+  become: yes
+  copy: srv=no-ip2.conf dest=/usr/local/etc/no-ip2.conf
+  
+- name: Copy init.d file
+  become: yes
+  copy: src=no-ip dest=/etc/init.d/no-ip
+
+- name: Make script executable 
+  become: yes
+  file: path=/etc/init.d/no-ip mode=0755
+
+- name: Update defautls
+  command: update-rc.d no-ip defaults
+
+- name: Start and enable no-ip service
+  become: yes
+  service: name=no-ip state=started enabled=yes
+
+
+
+

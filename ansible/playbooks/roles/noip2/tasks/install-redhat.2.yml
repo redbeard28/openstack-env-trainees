@@ -1,0 +1,38 @@
+---
+# Install tasks for ansible-role-noipduc
+# !!!! This script does not work yet!!!!!!!!!
+# Need to get past the prompt during make install
+- name: Download no-ip duc
+  get_url: url=http://www.no-ip.com/client/linux/noip-duc-linux.tar.gz dest=/usr/local/src/ mode=0440
+
+- stat: path=/usr/local/src/noip-duc-linux.tar.gz
+  register: noipduc_tar_stat
+
+- name:  Extract no-ip udc tar
+  when:  noipduc_tar_stat.stat.exists == True 
+  unarchive: src=/usr/local/src/noip-duc-linux.tar.gz dest=/usr/local/src/ copy=no owner={{ username }} group={{ username }}
+
+- name: Make install 
+  become: yes
+  shell: make install
+  args:
+    chdir: /usr/local/src/noip-2.1.9-1/
+ 
+- name: Copy init.d file
+  become: yes
+  copy: src=no-ip dest=/etc/init.d/no-ip 
+
+- name: Make script executable 
+  become: yes
+  file: path=/etc/init.d/no-ip mode=0755
+
+- name: Update defautls
+  command: update-rc.d no-ip defaults
+
+- name: Start and enable no-ip service
+  become: yes
+  service: name=no-ip state=started enabled=yes
+
+
+
+
