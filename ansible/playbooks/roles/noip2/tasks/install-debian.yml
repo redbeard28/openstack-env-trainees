@@ -21,17 +21,17 @@
   
 - name: Copy Compiled noip2 binarie
   become: yes
-  copy: src=noip2 dest=/usr/local/bin/noip2
+  copy: src=trainees/noip2 dest=/usr/local/bin/noip2
   tags: trainees
   
 - name: Copy Config noip2
   become: yes
-  copy: src=no-ip2.conf dest=/usr/local/etc/no-ip2.conf
+  copy: src=trainees/no-ip2.conf dest=/usr/local/etc/no-ip2.conf
   tags: trainees
 
 - name: Copy Compiled noip2 binarie
   become: yes
-  copy: src=noip2 dest=/usr/local/bin/noip2
+  copy: src=mydashboard/noip2 dest=/usr/local/bin/noip2
   tags: mydashboard
 
 - name: Make binary executable 
@@ -40,7 +40,7 @@
   
 - name: Copy Config noip2
   become: yes
-  copy: src=no-ip2.conf dest=/usr/local/etc/no-ip2.conf
+  copy: src=mydashboard/no-ip2.conf dest=/usr/local/etc/no-ip2.conf
   tags: mydashboard
   
 - name: Copy init.d file
