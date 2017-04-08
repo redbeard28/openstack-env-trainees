@@ -22,10 +22,22 @@
 - name: Copy Compiled noip2 binarie
   become: yes
   copy: src=noip2 dest=/usr/local/bin/noip2
+  tags: trainees
   
-- name: Copy Compiled noip2 config
+- name: Copy Config noip2
   become: yes
   copy: src=no-ip2.conf dest=/usr/local/etc/no-ip2.conf
+  tags: trainees
+
+- name: Copy Compiled noip2 binarie
+  become: yes
+  copy: src=noip2 dest=/usr/local/bin/noip2
+  tags: mydashboard
+  
+- name: Copy Config noip2
+  become: yes
+  copy: src=no-ip2.conf dest=/usr/local/etc/no-ip2.conf
+  tags: mydashboard
   
 - name: Copy init.d file
   become: yes
@@ -34,6 +46,10 @@
 - name: Make script executable 
   become: yes
   file: path=/etc/init.d/no-ip mode=0755
+
+- name: Make Config limited access 
+  become: yes
+  file: path=/usr/local/etc/no-ip2.con mode=0600
 
 - name: Update defautls
   command: update-rc.d no-ip defaults

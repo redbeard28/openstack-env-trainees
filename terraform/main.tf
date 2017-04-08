@@ -100,7 +100,15 @@ resource "openstack_compute_instance_v2" "terraform" {
     destination = "~/bootstrapbastion.sh"
   }
     
-    
+  provisioner "file" {
+    connection {
+      user     = "${var.ssh_user_name}"
+      private_key = "${file(var.ssh_key_file)}"
+    }
+    source      = "~/.ssh/id_rsa"
+    destination = "~/.ssh/id_rsa"
+  }
+  
   provisioner "remote-exec" {
     connection {
       user     = "${var.ssh_user_name}"
@@ -125,6 +133,52 @@ resource "openstack_compute_instance_v2" "node" {
     uuid = "${openstack_networking_network_v2.terraform.id}"
     fixed_ip_v4 = "192.168.199.2${count.index}"
   }
+  
+  provisioner "file" {
+    connection {
+      user     = "${var.ssh_user_name}"
+      private_key = "${file(var.ssh_key_file)}"
+    }
+    source      = "bootstrap-hostsfiles.sh"
+    destination = "~/bootstrap-hostsfiles.sh"
+  }
+  
+  provisioner "remote-exec" {
+    connection {
+      user     = "${var.ssh_user_name}"
+      private_key = "${file(var.ssh_key_file)}"
+    }
+    inline = [
+      "chmod 755 ~/bootstrap-hostsfiles.sh",
+      "~/bootstrap-hostsfiles.sh",
+    ]
+  }
+  provisioner "file" {
+    connection {
+      user     = "${var.ssh_user_name}"
+      private_key = "${file(var.ssh_key_file)}"
+    }
+    source      = "~/.ssh/id_rsa"
+    destination = "~/.ssh/id_rsa"
+  }
+  
+  provisioner "file" {
+    connection {
+      user     = "${var.ssh_user_name}"
+      private_key = "${file(var.ssh_key_file)}"
+    }
+    source      = "public_keys/jcu"
+    destination = "~/.ssh/authorized_keys"
+  }
+ 
+   provisioner "file" {
+    connection {
+      user     = "${var.ssh_user_name}"
+      private_key = "${file(var.ssh_key_file)}"
+    }
+    source      = "hosts"
+    destination = "/etc/hosts"
+  }  
 
 }
 
@@ -141,24 +195,34 @@ resource "openstack_compute_instance_v2" "webserver" {
     uuid = "${openstack_networking_network_v2.terraform.id}"
     fixed_ip_v4 = "192.168.199.10"
   }
+
   provisioner "file" {
     connection {
       user     = "${var.ssh_user_name}"
       private_key = "${file(var.ssh_key_file)}"
     }
-    source      = "bootstrap-${var.os_name}.sh"
-    destination = "~/bootstrap.sh"
+    source      = "bootstrap-hostsfiles.sh"
+    destination = "~/bootstrap-hostsfiles.sh"
   }
-    
-    
+  
   provisioner "remote-exec" {
     connection {
       user     = "${var.ssh_user_name}"
       private_key = "${file(var.ssh_key_file)}"
     }
     inline = [
-      "chmod 755 ~/bootstrapbastion.sh",
-      "~/bootstrapbastion.sh",
+      "chmod 755 ~/bootstrap-hostsfiles.sh",
+      "~/bootstrap-hostsfiles.sh",
     ]
   }
+  
+  provisioner "file" {
+    connection {
+      user     = "${var.ssh_user_name}"
+      private_key = "${file(var.ssh_key_file)}"
+    }
+    source      = "~/.ssh/id_rsa"
+    destination = "~/.ssh/id_rsa"
+  }
+    
 }

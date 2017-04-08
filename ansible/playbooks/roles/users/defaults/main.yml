@@ -1,9 +1,10 @@
 users_list:
-  - { name: 'jeremie_cuadrado', group1: 'phenix-ops', group2: 'users', key: 'public_keys/jeremie_cuadrado', bash_file: 'bashrc/.bashrc_jeremie_cuadrado' }
-  - { name: 'julien_forest', group1: 'phenix-ops', group2: 'users', key: 'public_keys/julien_forest', bash_file: 'bashrc/.bashrc_julien_forest' }
-  - { name: 'atsou_attoh', group1: 'phenix-ops', group2: 'users', key: 'public_keys/atsou_attoh', bash_file: 'bashrc/.bashrc_atsou_attoh' }
-  - { name: 'ali_dhahri', group1: 'phenix-ops', group2: 'users', key: 'public_keys/ali_dhahri', bash_file: 'bashrc/.bashrc_ali_dhahri' }
-  - { name: 'taoufik_dachraoui', group1: 'phenix-ops', group2: 'users', key: 'public_keys/taoufik_dachraoui', bash_file: 'bashrc/.bashrc_taoufik_dachraoui' }
+  - { name: 'jeremie', group1: 'phenix-ops', group2: 'users', key: 'public_keys/jeremie_cuadrado', bash_file: 'bashrc/.bashrc_jeremie' }
+  - { name: 'julien', group1: 'phenix-ops', group2: 'users', key: 'public_keys/julien_forest', bash_file: 'bashrc/.bashrc' }
+  - { name: 'atsou', group1: 'phenix-ops', group2: 'users', key: 'public_keys/aat', bash_file: 'bashrc/.bashrc' }
+  - { name: 'ali', group1: 'phenix-ops', group2: 'users', key: 'public_keys/adh', bash_file: 'bashrc/.bashrc' }
+  - { name: 'taoufik', group1: 'phenix-ops', group2: 'users', key: 'public_keys/tda', bash_file: 'bashrc/.bashrc' }
+  
 
 groups_list:
   - phenix-ops
