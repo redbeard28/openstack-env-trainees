@@ -34,4 +34,5 @@ cd ~/repo/ansible
 #ansible-playbook -i 'localhost,' -c local playbooks/install-gitlab.yml
 #ansible-playbook -i 'localhost,' -c local playbooks/install-sensu.yml
 #ansible-playbook -i 'localhost,' -c local playbooks/install-postfixV2.yml
+ansible-playbook -i hosts playbooks/commons.yml
 ansible-playbook -i 'localhost,' -c local playbooks/install-noip2.yml

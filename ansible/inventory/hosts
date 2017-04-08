@@ -1,0 +1,9 @@
+[all]
+192.168.199.5 hostname=bastion
+192.168.199.10 hostname=webserver
+
+[bastion]
+bastion
+
+[apache]
+webserver

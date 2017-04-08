@@ -146,8 +146,8 @@ resource "openstack_compute_instance_v2" "webserver" {
       user     = "${var.ssh_user_name}"
       private_key = "${file(var.ssh_key_file)}"
     }
-    source      = "bootstrapbastion-${var.os_name}.sh"
-    destination = "~/bootstrapbastion.sh"
+    source      = "bootstrap-${var.os_name}.sh"
+    destination = "~/bootstrap.sh"
   }
     
     

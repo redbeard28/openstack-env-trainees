@@ -1,2 +1,3 @@
 ansible_conf_path:  '~/repo/ansible'
 dynamic_data_store: '{{ ansible_conf_path }}/data/dynamic'
+smtp_relay: 192.168.199.5

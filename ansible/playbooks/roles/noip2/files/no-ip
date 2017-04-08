@@ -1,16 +1,23 @@
 #! /bin/sh
-# . /etc/rc.d/init.d/functions  # uncomment/modify for your killproc
+# uncomment/modify for your killproc
+. /lib/lsb/init-functions
+
 case "$1" in
     start)
-        echo "Starting noip2."
+        echo "Starting noip2..."
         /usr/local/bin/noip2
     ;;
     stop)
-        echo -n "Shutting down noip2."
+        echo -n "Stoping noip2..."
         killproc -TERM /usr/local/bin/noip2
     ;;
+    restart)
+        echo -n "Stoping noip2..."
+        killproc -TERM /usr/local/bin/noip2
+        echo "Starting noip2..."
+        /usr/local/bin/noip2
     *)
-        echo "Usage: $0 {start|stop}"
+        echo "Usage: $0 {start|stop|restart}"
         exit 1
 esac
 exit 0

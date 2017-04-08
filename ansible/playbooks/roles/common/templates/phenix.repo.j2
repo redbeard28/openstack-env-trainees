@@ -1,0 +1,23 @@
+[phenix-release]
+name=phenix-release
+baseurl={{ phenix_packages_repository_releases }}
+gpgcheck=0
+enabled={{ enable_phenix_releases }}
+
+[phenix-snapshots]
+name=phenix-snapshots
+baseurl={{ phenix_packages_repository_snapshots }}
+gpgcheck=0
+enabled={{ enable_phenix_snapshots }}
+
+[phenix-repository]
+name=phenix-repository
+baseurl={{ phenix_packages_repository }}
+gpgcheck=0
+enabled=1
+
+[centos-base]
+name=centos-base
+baseurl={{ phenix_root_repository }}/{{ os_specific_version }}
+gpgcheck=0
+enabled={{ enable_base_repository }}
