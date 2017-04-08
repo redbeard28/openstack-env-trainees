@@ -33,6 +33,10 @@
   become: yes
   copy: src=noip2 dest=/usr/local/bin/noip2
   tags: mydashboard
+
+- name: Make binary executable 
+  become: yes
+  file: path=/usr/local/bin/noip2 mode=0755
   
 - name: Copy Config noip2
   become: yes
