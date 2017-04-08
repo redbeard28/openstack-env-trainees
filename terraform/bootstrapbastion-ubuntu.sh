@@ -40,6 +40,7 @@ sudo ./install_terraform_packer.sh
 mkdir ~/repo
 git clone https://github.com/redbeard28/openstack-env-trainees.git ~/repo/ -b traineesv1
 cd ~/repo/ansible
+chmod 600 ~/.ssh/id_rsa
 #ansible-playbook -i 'localhost,' -c local playbooks/install-openldap.yml
 #ansible-playbook -i 'localhost,' -c local playbooks/install-gitlab.yml
 #ansible-playbook -i 'localhost,' -c local playbooks/install-sensu.yml

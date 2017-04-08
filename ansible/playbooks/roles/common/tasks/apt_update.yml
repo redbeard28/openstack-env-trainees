@@ -11,3 +11,5 @@
   - make
   - gcc
   - git
+  - nmap
+  - python3

@@ -133,7 +133,7 @@ resource "openstack_compute_instance_v2" "node" {
     uuid = "${openstack_networking_network_v2.terraform.id}"
     fixed_ip_v4 = "192.168.199.2${count.index}"
   }
-  user_data = "${file("bootstrap-hostsfiles.sh")}
+  user_data = "${file("bootstrap-hostsfiles.sh")}"
 }
 
 ######## WebServer  ########
@@ -150,25 +150,18 @@ resource "openstack_compute_instance_v2" "webserver" {
     fixed_ip_v4 = "192.168.199.10"
   }
 
-  provisioner "file" {
-    connection {
-      user     = "${var.ssh_user_name}"
-      private_key = "${file(var.ssh_key_file)}"
-    }
-    source      = "bootstrap-hostsfiles.sh"
-    destination = "~/bootstrap-hostsfiles.sh"
-  }
+  user_data = "${file("bootstrap-hostsfiles.sh")}"
   
-  provisioner "remote-exec" {
-    connection {
-      user     = "${var.ssh_user_name}"
-      private_key = "${file(var.ssh_key_file)}"
-    }
-    inline = [
-      "chmod 755 ~/bootstrap-hostsfiles.sh",
-      "~/bootstrap-hostsfiles.sh",
-    ]
-  }
+  #provisioner "remote-exec" {
+  #  connection {
+  #    user     = "${var.ssh_user_name}"
+  #    private_key = "${file(var.ssh_key_file)}"
+  #  }
+  #  inline = [
+  #    "chmod 755 ~/bootstrap-hostsfiles.sh",
+  #    "~/bootstrap-hostsfiles.sh",
+  #  ]
+  #}
   
   provisioner "file" {
     connection {
