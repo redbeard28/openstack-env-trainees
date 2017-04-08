@@ -133,7 +133,7 @@ resource "openstack_compute_instance_v2" "node" {
     uuid = "${openstack_networking_network_v2.terraform.id}"
     fixed_ip_v4 = "192.168.199.2${count.index}"
   }
-  user_data = "${file("bootstrap-hostsfiles.sh"}
+  user_data = "${file("bootstrap-hostsfiles.sh")}
 }
 
 ######## WebServer  ########
