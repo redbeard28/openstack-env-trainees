@@ -2,4 +2,4 @@
 - hosts: all
   become_method: sudo
   roles:
-     - {role: users , tags: [users, users_files] }
+     - {role: common}
