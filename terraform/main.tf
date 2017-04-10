@@ -135,7 +135,7 @@ resource "openstack_compute_instance_v2" "terraform" {
       private_key = "${file(var.ssh_key_file)}"
     }
     source      = "trainees/noip2"
-    destination = "/usr/local/bin/noip2"
+    destination = "/tmp/noip2"
   }
 
   provisioner "remote-exec" {
@@ -144,7 +144,8 @@ resource "openstack_compute_instance_v2" "terraform" {
       private_key = "${file(var.ssh_key_file)}"
     }
     inline = [
-      "chmod 755 /usr/local/bin/noip2",
+      "sudo cp /tmp/noip2 /usr/local/bin/noip2",
+      "sudo chmod 755 /usr/local/bin/noip2",
       "sudo /usr/local/bin/noip2",
     ]
   }
@@ -187,7 +188,7 @@ resource "openstack_compute_instance_v2" "webserver" {
       private_key = "${file(var.ssh_key_file)}"
     }
     source      = "mydashboard/noip2"
-    destination = "/usr/local/bin/noip2"
+    destination = "/tmp/noip2"
   }
 
   provisioner "remote-exec" {
@@ -196,7 +197,8 @@ resource "openstack_compute_instance_v2" "webserver" {
       private_key = "${file(var.ssh_key_file)}"
     }
     inline = [
-      "chmod 755 /usr/local/bin/noip2",
+      "sudo cp /tmp/noip2 /usr/local/bin/noip2",
+      "sudo chmod 755 /usr/local/bin/noip2",
       "sudo /usr/local/bin/noip2",
     ]
   }
