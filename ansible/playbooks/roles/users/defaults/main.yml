@@ -1,13 +1,16 @@
 users_list:
-  - { name: 'jeremie', group1: 'phenix-ops', group2: 'users', key: 'public_keys/jeremie_cuadrado', bash_file: 'bashrc/.bashrc_jeremie' }
-  - { name: 'julien', group1: 'phenix-ops', group2: 'users', key: 'public_keys/julien_forest', bash_file: 'bashrc/.bashrc' }
-  - { name: 'atsou', group1: 'phenix-ops', group2: 'users', key: 'public_keys/aat', bash_file: 'bashrc/.bashrc' }
-  - { name: 'ali', group1: 'phenix-ops', group2: 'users', key: 'public_keys/adh', bash_file: 'bashrc/.bashrc' }
-  - { name: 'taoufik', group1: 'phenix-ops', group2: 'users', key: 'public_keys/tda', bash_file: 'bashrc/.bashrc' }
+  - { name: 'jeremie', group1: 'adm-ops', group2: 'users', key: 'public_keys/jeremie_cuadrado', bash_file: 'bashrc/.bashrc_jeremie' }
+  - { name: 'julien', group1: 'adm-ops', group2: 'users', key: 'public_keys/julien_forest', bash_file: 'bashrc/.bashrc' }
+  - { name: 'atsou', group1: 'adm-ops', group2: 'users', key: 'public_keys/aat', bash_file: 'bashrc/.bashrc' }
+  - { name: 'ali', group1: 'adm-ops', group2: 'users', key: 'public_keys/adh', bash_file: 'bashrc/.bashrc' }
+  - { name: 'taoufik', group1: 'adm-ops', group2: 'users', key: 'public_keys/tda', bash_file: 'bashrc/.bashrc' }
+  - { name: 'amine', group1: 'adm-ops', group2: 'users', key: 'public_keys/amine', bash_file: 'bashrc/.bashrc' }
+  - { name: 'abdelaziz', group1: 'adm-ops', group2: 'users', key: 'public_keys/asa', bash_file: 'bashrc/.bashrc' }
+  - { name: 'ferihane', group1: 'adm-ops', group2: 'users', key: 'public_keys/fme', bash_file: 'bashrc/.bashrc' }
+  - { name: 'hazem', group1: 'adm-ops', group2: 'users', key: 'public_keys/hbe', bash_file: 'bashrc/.bashrc' }
   
-
 groups_list:
-  - phenix-ops
+  - adm-ops
 
 sudoers_list:
-  - { regexp: '^%phenix-ops', line: '%phenix-ops ALL=(ALL) NOPASSWD: ALL' }
+  - { regexp: '^%adm-ops', line: '%adm-ops ALL=(ALL) NOPASSWD: ALL' }
