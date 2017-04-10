@@ -28,4 +28,6 @@ variable "elastic" {
   default ="3"
 }
 
-variable "os_name" {}
+variable "os_name" {
+  default ="ubuntu"
+}

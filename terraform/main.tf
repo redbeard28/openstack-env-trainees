@@ -128,12 +128,9 @@ resource "openstack_compute_instance_v2" "node" {
   image_name      = "${var.image}"
   flavor_name     = "${var.flavor}"
   key_pair        = "${openstack_compute_keypair_v2.terraform.name}"
-  
   network {
     uuid = "${openstack_networking_network_v2.terraform.id}"
-#    fixed_ip_v4 = "192.168.199.2${count.index}"
   }
-  user_data = "${file("bootstrap-hostsfiles.sh")}"
 }
 
 ######## WebServer  ########
@@ -144,25 +141,11 @@ resource "openstack_compute_instance_v2" "webserver" {
   key_pair        = "${openstack_compute_keypair_v2.terraform.name}"
   security_groups = ["${openstack_compute_secgroup_v2.terraform.name}"]
   floating_ip     = "${openstack_compute_floatingip_v2.webserv_ip.address}"
-  
   network {
     uuid = "${openstack_networking_network_v2.terraform.id}"
     fixed_ip_v4 = "192.168.199.10"
   }
 
-  user_data = "${file("bootstrap-hostsfiles.sh")}"
-  
-  #provisioner "remote-exec" {
-  #  connection {
-  #    user     = "${var.ssh_user_name}"
-  #    private_key = "${file(var.ssh_key_file)}"
-  #  }
-  #  inline = [
-  #    "chmod 755 ~/bootstrap-hostsfiles.sh",
-  #    "~/bootstrap-hostsfiles.sh",
-  #  ]
-  #}
-  
   provisioner "file" {
     connection {
       user     = "${var.ssh_user_name}"
