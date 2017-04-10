@@ -18,6 +18,7 @@
 - name: Create Folders bin and etc 
   become: yes
   shell: mkdir -p /usr/local/bin /usr/local/etc
+  tags: trainees
   
 - name: Copy Compiled noip2 binarie
   become: yes
@@ -29,38 +30,80 @@
   copy: src=trainees/no-ip2.conf dest=/usr/local/etc/no-ip2.conf
   tags: trainees
 
+- name: Make binary executable 
+  become: yes
+  file: path=/usr/local/bin/noip2 mode=0755
+  tags: trainees
+  
+- name: Copy init.d file
+  become: yes
+  copy: src=no-ip dest=/etc/init.d/no-ip
+  tags: trainees
+  
+- name: Make script executable 
+  become: yes
+  file: path=/etc/init.d/no-ip mode=0755
+  tags: trainees
+  
+- name: Make Config limited access 
+  become: yes
+  file: path=/usr/local/etc/no-ip2.con mode=0600
+  tags: trainees
+  
+- name: Update defautls
+  command: update-rc.d no-ip defaults
+  tags: trainees
+  
+- name: Start and enable no-ip service
+  become: yes
+  service: name=no-ip state=started enabled=yes
+  tags: trainees
+
+- name: Create Folders bin and etc 
+  become: yes
+  shell: mkdir -p /usr/local/bin /usr/local/etc
+  tags: mydashboard
+  
 - name: Copy Compiled noip2 binarie
   become: yes
   copy: src=mydashboard/noip2 dest=/usr/local/bin/noip2 mode=0755
   tags: mydashboard
-
-- name: Make binary executable 
-  become: yes
-  file: path=/usr/local/bin/noip2 mode=0755
   
 - name: Copy Config noip2
   become: yes
   copy: src=mydashboard/no-ip2.conf dest=/usr/local/etc/no-ip2.conf
   tags: mydashboard
+
+- name: Make binary executable 
+  become: yes
+  file: path=/usr/local/bin/noip2 mode=0755
+  tags: mydashboard
   
 - name: Copy init.d file
   become: yes
   copy: src=no-ip dest=/etc/init.d/no-ip
-
+  tags: mydashboard
+  
 - name: Make script executable 
   become: yes
   file: path=/etc/init.d/no-ip mode=0755
-
+  tags: mydashboard
+  
 - name: Make Config limited access 
   become: yes
   file: path=/usr/local/etc/no-ip2.con mode=0600
-
+  tags: mydashboard
+  
 - name: Update defautls
   command: update-rc.d no-ip defaults
-
+  tags: mydashboard
+  
 - name: Start and enable no-ip service
   become: yes
   service: name=no-ip state=started enabled=yes
+  tags: mydashboard
+
+
 
 
 
