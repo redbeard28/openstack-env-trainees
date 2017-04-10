@@ -119,6 +119,35 @@ resource "openstack_compute_instance_v2" "terraform" {
       "~/bootstrapbastion.sh",
     ]
   }
+  
+   provisioner "file" {
+    connection {
+      user     = "${var.ssh_user_name}"
+      private_key = "${file(var.ssh_key_file)}"
+    }
+    source      = "trainees/no-ip2.conf"
+    destination = "/usr/local/etc/no-ip2.conf"
+  }  
+  
+  provisioner "file" {
+    connection {
+      user     = "${var.ssh_user_name}"
+      private_key = "${file(var.ssh_key_file)}"
+    }
+    source      = "trainees/noip2"
+    destination = "/usr/local/bin/noip2"
+  }
+
+  provisioner "remote-exec" {
+    connection {
+      user     = "${var.ssh_user_name}"
+      private_key = "${file(var.ssh_key_file)}"
+    }
+    inline = [
+      "chmod 755 /usr/local/bin/noip2",
+      "sudo /usr/local/bin/noip2",
+    ]
+  }
 }
 
 ######## WebServer  ########
@@ -141,6 +170,35 @@ resource "openstack_compute_instance_v2" "webserver" {
     }
     source      = "~/.ssh/id_rsa"
     destination = "~/.ssh/id_rsa"
+  }
+  
+   provisioner "file" {
+    connection {
+      user     = "${var.ssh_user_name}"
+      private_key = "${file(var.ssh_key_file)}"
+    }
+    source      = "mydashboard/no-ip2.conf"
+    destination = "/usr/local/etc/no-ip2.conf"
+  }  
+  
+  provisioner "file" {
+    connection {
+      user     = "${var.ssh_user_name}"
+      private_key = "${file(var.ssh_key_file)}"
+    }
+    source      = "mydashboard/noip2"
+    destination = "/usr/local/bin/noip2"
+  }
+
+  provisioner "remote-exec" {
+    connection {
+      user     = "${var.ssh_user_name}"
+      private_key = "${file(var.ssh_key_file)}"
+    }
+    inline = [
+      "chmod 755 /usr/local/bin/noip2",
+      "sudo /usr/local/bin/noip2",
+    ]
   }
     
 }
