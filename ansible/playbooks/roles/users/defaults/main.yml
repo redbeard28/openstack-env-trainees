@@ -1,6 +1,6 @@
 users_list:
-  - { name: 'jeremie', group1: 'adm-ops', group2: 'users', key: 'public_keys/jeremie_cuadrado', bash_file: 'bashrc/.bashrc_jeremie' }
-  - { name: 'julien', group1: 'adm-ops', group2: 'users', key: 'public_keys/julien_forest', bash_file: 'bashrc/.bashrc' }
+  - { name: 'jeremie', group1: 'adm-ops', group2: 'users', key: 'public_keys/jcu', bash_file: 'bashrc/.bashrc_jeremie' }
+  - { name: 'julien', group1: 'adm-ops', group2: 'users', key: 'public_keys/jfo', bash_file: 'bashrc/.bashrc' }
   - { name: 'atsou', group1: 'adm-ops', group2: 'users', key: 'public_keys/aat', bash_file: 'bashrc/.bashrc' }
   - { name: 'ali', group1: 'adm-ops', group2: 'users', key: 'public_keys/adh', bash_file: 'bashrc/.bashrc' }
   - { name: 'taoufik', group1: 'adm-ops', group2: 'users', key: 'public_keys/tda', bash_file: 'bashrc/.bashrc' }

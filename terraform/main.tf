@@ -148,7 +148,7 @@ resource "openstack_compute_instance_v2" "terraform" {
       "sudo cp /tmp/no-ip2.conf /usr/local/etc/no-ip2.conf",
       "sudo chmod 755 /usr/local/bin/noip2",
       "sudo /usr/local/bin/noip2",
-      "for i in `echo "bastion webserver node-0 node-1 node-2"`;do ssh-keyscan $i;done",
+      "for i in $(echo 'bastion webserver node-0 node-1 node-2');do ssh-keyscan $i;done",
     ]
   }
 }
@@ -203,7 +203,7 @@ resource "openstack_compute_instance_v2" "webserver" {
       "sudo cp /tmp/no-ip2.conf /usr/local/etc/no-ip2.conf",
       "sudo chmod 755 /usr/local/bin/noip2",
       "sudo /usr/local/bin/noip2",
-      "for i in `echo "bastion webserver node-0 node-1 node-2"`;do ssh-keyscan $i;done",
+      "for i in $(echo 'bastion webserver node-0 node-1 node-2');do ssh-keyscan $i;done",
     ]
   }
     
@@ -220,14 +220,5 @@ resource "openstack_compute_instance_v2" "node" {
   network {
     uuid = "${openstack_networking_network_v2.terraform.id}"
     fixed_ip_v4 = "192.168.199.2${count.index}"
-  }
-  provisioner "remote-exec" {
-    connection {
-      user     = "${var.ssh_user_name}"
-      private_key = "${file(var.ssh_key_file)}"
-    }
-    inline = [
-      "for i in `echo "bastion webserver node-0 node-1 node-2"`;do ssh-keyscan $i;done",
-    ]
   }
 }
