@@ -46,7 +46,7 @@ chmod 600 ~/.ssh/id_rsa
 #ansible-playbook -i 'localhost,' -c local playbooks/install-sensu.yml
 #ansible-playbook -i 'localhost,' -c local playbooks/install-postfixV2.yml
 #ansible-playbook -i inventory/hosts playbooks/commons.yml
-ansible-playbook -i 'localhost,' -c local playbooks/install-noip2.yml --tags trainees
-ansible-playbook -i inventory/hosts playbooks/install-noip2.yml --tags mydashboard
+#ansible-playbook -i 'localhost,' -c local playbooks/install-noip2.yml --tags trainees
+#ansible-playbook -i inventory/hosts playbooks/install-noip2.yml --tags mydashboard
 #ansible-playbook -i inventory/hosts playbooks/create-users.yml --tags users,users_files
 
