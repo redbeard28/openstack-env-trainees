@@ -12,7 +12,7 @@
 - name: Copy public key to home authorized_keys
   copy:
     src: "{{ item.auth_file }}"
-    dest: /home/{{ item.name }}/ssh/authorized_keys
+    dest: /home/{{ item.name }}/.ssh/authorized_keys
     owner: '{{ item.name }}'
     group: '{{ item.group1 }}'
     mode: 0644
