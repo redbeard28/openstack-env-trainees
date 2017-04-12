@@ -41,7 +41,7 @@ resource "openstack_compute_secgroup_v2" "terraform" {
   description = "Security group for the Terraform example instances"
 
   rule {
-    from_port   = 22
+    from_port   = 873
     to_port     = 22
     ip_protocol = "tcp"
     cidr        = "0.0.0.0/0"
