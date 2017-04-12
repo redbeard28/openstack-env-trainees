@@ -1,13 +1,13 @@
 users_list:
-  - { name: 'jeremie', group1: 'adm-ops', group2: 'users', key: 'public_keys/jcu', bash_file: 'bashrc/.bashrc_jeremie' }
-  - { name: 'julien', group1: 'adm-ops', group2: 'users', key: 'public_keys/jfo', bash_file: 'bashrc/.bashrc' }
-  - { name: 'atsou', group1: 'adm-ops', group2: 'users', key: 'public_keys/aat', bash_file: 'bashrc/.bashrc' }
-  - { name: 'ali', group1: 'adm-ops', group2: 'users', key: 'public_keys/adh', bash_file: 'bashrc/.bashrc' }
-  - { name: 'taoufik', group1: 'adm-ops', group2: 'users', key: 'public_keys/tda', bash_file: 'bashrc/.bashrc' }
-  - { name: 'amine', group1: 'adm-ops', group2: 'users', key: 'public_keys/amine', bash_file: 'bashrc/.bashrc' }
-  - { name: 'abdelaziz', group1: 'adm-ops', group2: 'users', key: 'public_keys/asa', bash_file: 'bashrc/.bashrc' }
-  - { name: 'ferihane', group1: 'adm-ops', group2: 'users', key: 'public_keys/fme', bash_file: 'bashrc/.bashrc' }
-  - { name: 'hazem', group1: 'adm-ops', group2: 'users', key: 'public_keys/hbe', bash_file: 'bashrc/.bashrc' }
+  - { name: 'jeremie', group1: 'adm-ops', group2: 'users', key: 'public_keys/jcu', bash_file: 'bashrc/.bashrc', auth_file: 'public_keys/jcu' }
+  - { name: 'julien', group1: 'adm-ops', group2: 'users', key: 'public_keys/jfo', bash_file: 'bashrc/.bashrc', auth_file: 'public_keys/jfo' }
+  - { name: 'atsou', group1: 'adm-ops', group2: 'users', key: 'public_keys/aat', bash_file: 'bashrc/.bashrc', auth_file: 'public_keys/aat' }
+  - { name: 'ali', group1: 'adm-ops', group2: 'users', key: 'public_keys/adh', bash_file: 'bashrc/.bashrc', auth_file: 'public_keys/adh' }
+  - { name: 'taoufik', group1: 'adm-ops', group2: 'users', key: 'public_keys/tda', bash_file: 'bashrc/.bashrc', auth_file: 'public_keys/tda' }
+  - { name: 'amine', group1: 'adm-ops', group2: 'users', key: 'public_keys/amine', bash_file: 'bashrc/.bashrc', auth_file: 'public_keys/amine' }
+  - { name: 'abdelaziz', group1: 'adm-ops', group2: 'users', key: 'public_keys/asa', bash_file: 'bashrc/.bashrc', auth_file: 'public_keys/asa' }
+  - { name: 'ferihane', group1: 'adm-ops', group2: 'users', key: 'public_keys/fme', bash_file: 'bashrc/.bashrc', auth_file: 'public_keys/fme' }
+  - { name: 'hazem', group1: 'adm-ops', group2: 'users', key: 'public_keys/hbe', bash_file: 'bashrc/.bashrc', auth_file: 'public_keys/hbe' }
   
 groups_list:
   - adm-ops
