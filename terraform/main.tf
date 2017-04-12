@@ -41,6 +41,13 @@ resource "openstack_compute_secgroup_v2" "terraform" {
   description = "Security group for the Terraform example instances"
 
   rule {
+    from_port   = 22
+    to_port     = 22
+    ip_protocol = "tcp"
+    cidr        = "0.0.0.0/0"
+  }
+  
+  rule {
     from_port   = 873
     to_port     = 873
     ip_protocol = "tcp"
@@ -90,12 +97,12 @@ resource "openstack_compute_instance_v2" "terraform" {
     uuid = "${openstack_networking_network_v2.terraform.id}"
     fixed_ip_v4 = "192.168.199.5"
   }
+  user_data     = "user_data.sh"
 
   provisioner "file" {
     connection {
       user     = "${var.ssh_user_name}"
       private_key = "${file(var.ssh_key_file)}"
-      port = "873"
     }
     source      = "bootstrapbastion-${var.os_name}.sh"
     destination = "~/bootstrapbastion.sh"
@@ -105,7 +112,6 @@ resource "openstack_compute_instance_v2" "terraform" {
     connection {
       user     = "${var.ssh_user_name}"
       private_key = "${file(var.ssh_key_file)}"
-      port = "873"
     }
     source      = "~/.ssh/id_rsa"
     destination = "~/.ssh/id_rsa"
@@ -115,7 +121,6 @@ resource "openstack_compute_instance_v2" "terraform" {
     connection {
       user     = "${var.ssh_user_name}"
       private_key = "${file(var.ssh_key_file)}"
-      port = "873"
     }
     inline = [
       "sudo echo 'Port 873' >> /etc/ssh/sshd_config",
@@ -128,7 +133,6 @@ resource "openstack_compute_instance_v2" "terraform" {
     connection {
       user     = "${var.ssh_user_name}"
       private_key = "${file(var.ssh_key_file)}"
-      port = "873"
     }
     source      = "trainees/no-ip2.conf"
     destination = "/tmp/no-ip2.conf"
@@ -138,7 +142,6 @@ resource "openstack_compute_instance_v2" "terraform" {
     connection {
       user     = "${var.ssh_user_name}"
       private_key = "${file(var.ssh_key_file)}"
-      port = "873"
     }
     source      = "trainees/noip2"
     destination = "/tmp/noip2"
@@ -148,7 +151,6 @@ resource "openstack_compute_instance_v2" "terraform" {
     connection {
       user     = "${var.ssh_user_name}"
       private_key = "${file(var.ssh_key_file)}"
-      port = "873"
     }
     inline = [
       "sudo echo 'Port 873' >> /etc/ssh/sshd_config",
@@ -173,7 +175,8 @@ resource "openstack_compute_instance_v2" "webserver" {
     uuid = "${openstack_networking_network_v2.terraform.id}"
     fixed_ip_v4 = "192.168.199.10"
   }
-
+  user_data     = "user_data.sh"
+  
   provisioner "file" {
     connection {
       user     = "${var.ssh_user_name}"
