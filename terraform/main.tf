@@ -80,7 +80,7 @@ resource "openstack_compute_floatingip_v2" "webserv_ip" {
 }
 
 resource "openstack_compute_instance_v2" "terraform" {
-  name            = "terraform"
+  name            = "bastion"
   image_name      = "${var.image}"
   flavor_name     = "${var.flavor}"
   key_pair        = "${openstack_compute_keypair_v2.terraform.name}"
