@@ -42,7 +42,7 @@ resource "openstack_compute_secgroup_v2" "terraform" {
 
   rule {
     from_port   = 873
-    to_port     = 22
+    to_port     = 873
     ip_protocol = "tcp"
     cidr        = "0.0.0.0/0"
   }
@@ -95,6 +95,7 @@ resource "openstack_compute_instance_v2" "terraform" {
     connection {
       user     = "${var.ssh_user_name}"
       private_key = "${file(var.ssh_key_file)}"
+      port = "873"
     }
     source      = "bootstrapbastion-${var.os_name}.sh"
     destination = "~/bootstrapbastion.sh"
@@ -104,6 +105,7 @@ resource "openstack_compute_instance_v2" "terraform" {
     connection {
       user     = "${var.ssh_user_name}"
       private_key = "${file(var.ssh_key_file)}"
+      port = "873"
     }
     source      = "~/.ssh/id_rsa"
     destination = "~/.ssh/id_rsa"
@@ -113,8 +115,10 @@ resource "openstack_compute_instance_v2" "terraform" {
     connection {
       user     = "${var.ssh_user_name}"
       private_key = "${file(var.ssh_key_file)}"
+      port = "873"
     }
     inline = [
+      "sudo echo 'Port 873' >> /etc/ssh/sshd_config",
       "chmod 755 ~/bootstrapbastion.sh",
       "~/bootstrapbastion.sh",
     ]
@@ -124,6 +128,7 @@ resource "openstack_compute_instance_v2" "terraform" {
     connection {
       user     = "${var.ssh_user_name}"
       private_key = "${file(var.ssh_key_file)}"
+      port = "873"
     }
     source      = "trainees/no-ip2.conf"
     destination = "/tmp/no-ip2.conf"
@@ -133,6 +138,7 @@ resource "openstack_compute_instance_v2" "terraform" {
     connection {
       user     = "${var.ssh_user_name}"
       private_key = "${file(var.ssh_key_file)}"
+      port = "873"
     }
     source      = "trainees/noip2"
     destination = "/tmp/noip2"
@@ -142,8 +148,10 @@ resource "openstack_compute_instance_v2" "terraform" {
     connection {
       user     = "${var.ssh_user_name}"
       private_key = "${file(var.ssh_key_file)}"
+      port = "873"
     }
     inline = [
+      "sudo echo 'Port 873' >> /etc/ssh/sshd_config",
       "sudo cp /tmp/noip2 /usr/local/bin/noip2",
       "sudo cp /tmp/no-ip2.conf /usr/local/etc/no-ip2.conf",
       "sudo chmod 755 /usr/local/bin/noip2",
