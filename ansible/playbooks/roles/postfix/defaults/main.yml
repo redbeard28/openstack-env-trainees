@@ -1,4 +1,6 @@
 ---
+<<<<<<< HEAD
+=======
 
 postfix_enabled: yes # The role is enabled
 
@@ -45,3 +47,4 @@ postfix_tls_generate: False
 postfix_ssl_subject: ""
 postfix_tls_cert_file: "/etc/ssl/certs/ssl-cert-snakeoil.pem"
 postfix_tls_key_file: "/etc/ssl/private/ssl-cert-snakeoil.key"
+>>>>>>> 107ce1d5954b6410f1d843e26c05f154ca3cb2fd
