@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 terraform/private_keys/id_rsa
 .c9
 terraform/terraform*
+=======
+id_rsa
+phenix-run
+*.tfstate.*
+terraform.tfstate
+>>>>>>> master
+=======
+terraform/private_keys/id_rsa
+.c9
+terraform/terraform*
+>>>>>>> 00535253cd15e349c7a776314758a154edf21d09
