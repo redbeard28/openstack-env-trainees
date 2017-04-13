@@ -1,4 +1,3 @@
-id_rsa
-phenix-run
-*.tfstate.*
-terraform.tfstate
+terraform/private_keys/id_rsa
+.c9
+terraform/terraform*

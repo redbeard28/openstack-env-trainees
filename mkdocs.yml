@@ -7,7 +7,10 @@ site_author: Jeremie CUADRADO aka redbeard28
 theme: readthedocs
 pages:
   - [ 'index.md', 'Home' ]
+  - [ 'ssh_tunnel.md', 'Basics', 'SSH Tunnel']
   - [ 'prequisits.md', 'Home', 'Prequisits' ]
   - [ 'tested_os.md', 'Home', 'Tested for' ]
+  - [ 'role_common', 'Ansible', 'Role Common']
+  - [ 'role_gitlab_server', 'Ansible', 'Role Gitlab']
   - [ 'license.md', 'About', 'License' ]
   - [ 'about.md', 'About', 'about.md' ]

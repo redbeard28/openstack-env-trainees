@@ -1,0 +1,15 @@
+---
+- name: Update cache repos
+  become: yes
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: Install Make GCC
+  become: yes
+  apt: name={{item}}
+  with_items:
+  - build-essential
+  - make
+  - gcc
+  - git
+  - nmap
+  - python3

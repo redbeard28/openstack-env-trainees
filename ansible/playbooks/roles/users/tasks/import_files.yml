@@ -1,0 +1,20 @@
+---
+- name: Copy .bashrc to home folder
+  copy:
+    src: bashrc/.bashrc
+    dest: /home/{{ item.name }}/.bashrc
+    owner: '{{ item.name }}'
+    group: '{{ item.group1 }}'
+    mode: 0644
+  with_items: "{{ users_list }}"
+  tags: users_files
+  
+- name: Copy public key to home authorized_keys
+  copy:
+    src: "{{ item.auth_file }}"
+    dest: /home/{{ item.name }}/.ssh/authorized_keys
+    owner: '{{ item.name }}'
+    group: '{{ item.group1 }}'
+    mode: 0644
+  with_items: "{{ users_list }}"
+  tags: users_files

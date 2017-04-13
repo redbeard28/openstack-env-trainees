@@ -1,0 +1,25 @@
+---
+- name: Create devops groups
+  group: name={{ item }} state=present
+  with_items: "{{ groups_list }}"
+  
+- name: Create devops users
+  user: name={{ item.name }} group={{ item.group1 }} groups={{ item.group2 }} shell=/bin/bash append=yes
+  with_items: "{{ users_list }}"
+
+- name: Deploy ssh public keys
+  authorized_key: user={{ item.name }} key="{{ lookup('file', '{{ item.key }}') }}" state=present
+  with_items: "{{ users_list }}"
+  when: '"{{ item.key }}"|default("") != ""' 
+
+- name: Add devops users into sudoers
+  lineinfile:
+     dest: /etc/sudoers 
+     state: present 
+     backup: yes
+     regexp: "{{ item.regexp }}"
+     line: "{{ item.line }}"
+  with_items: "{{ sudoers_list }}"
+  
+
+
