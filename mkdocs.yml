@@ -14,4 +14,4 @@ pages:
   - [ 'role_gitlab_server.md', 'Ansible', 'Role Gitlab' ]
   - [ 'common_errors.md', 'Ansible', 'Commons Errors' ]
   - [ 'license.md', 'About', 'License' ]
-  - [ 'about.md', 'About', 'about.md' ]
+  - [ 'about.md', 'About', 'About' ]
