@@ -114,3 +114,4 @@ You can see the rules that fail2ban puts in effect within the IP table:
 ```bash
 sudo iptables -L
 ```
+

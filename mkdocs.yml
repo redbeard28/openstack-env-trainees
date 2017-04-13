@@ -11,6 +11,7 @@ pages:
   - [ 'prequisits.md', 'Home', 'Prequisits' ]
   - [ 'tested_os.md', 'Home', 'Tested for' ]
   - [ 'role_common', 'Ansible', 'Role Common']
-  - [ 'role_gitlab_server', 'Ansible', 'Role Gitlab']
+  - [ 'role_gitlab_server', 'Ansible', 'Role Gitlab' ]
+  - [ 'common_errors', 'Ansible', 'Commons Errors' ]
   - [ 'license.md', 'About', 'License' ]
   - [ 'about.md', 'About', 'about.md' ]
