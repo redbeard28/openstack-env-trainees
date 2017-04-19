@@ -1,16 +1,15 @@
-[![Français](http://upload.wikimedia.org/wikipedia/commons/1/14/Flag_of_france.png "Française")](README-FR.md)
-
+[![English](http://upload.wikimedia.org/wikipedia/commons/e/e1/Union_Jack_22x16.png "English")](README.md)
 <h1>
-  <span>Create an OpenStack env for my trainees</span>
+  <span>Création d'un environnement Openstack pour stagiaires</span>
   <a href='http://openstack-env-trainees.readthedocs.io/en/latest/?badge=latest'>
     <img src='https://readthedocs.org/projects/openstack-env-trainees/badge/?version=latest' alt='Documentation Status' />
   </a>
 </h1>
 
 ## Object
-This repo is used by myself to deploy an integral env for my trainees.
+J'utilise ce repo pour créer des environnements Openstack pour mes tests ou stagiaires.
 
-## Servers
+## Serveurs
 - 3 x servers Elastic + logstash
 
 ## Virtuals workstations
@@ -24,5 +23,5 @@ The OpenStask server is maintained by a third party. So I don't have any admin p
 
 We use terraform to deploy the trainees env and ansible to install elasticsearch and logstash.
 
-## Url to the doc is
+## Url vers la documentation complète en anglais...
 [Full documentation](http://openstack-env-trainees.readthedocs.io/en/latest/)

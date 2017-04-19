@@ -1,4 +1,4 @@
-# How To Protect SSH with fail2ban on Ubuntu 12.04
+# How To Protect SSH with fail2ban on Ubuntu 16.04 LTS
 
 ## About Fail2Ban
 Servers do not exist in isolation, and those virtual private servers with only the most basic SSH configuration can be vulnerable to brute force attacks. fail2ban provides a way to automatically protect virtual servers from malicious behavior. The program works by scanning through log files and reacting to offending actions such as repeated failed login attempts.

@@ -4,7 +4,7 @@ variable "image" {
 }
 
 variable "flavor" {
-  default = "Large"
+  default = "Small"
 }
 
 variable "ssh_key_file" {
