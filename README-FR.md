@@ -23,5 +23,5 @@ The OpenStask server is maintained by a third party. So I don't have any admin p
 
 We use terraform to deploy the trainees env and ansible to install elasticsearch and logstash.
 
-## Url to the doc is
+## Url vers la documentation complète en anglais...
 [Full documentation](http://openstack-env-trainees.readthedocs.io/en/latest/)
