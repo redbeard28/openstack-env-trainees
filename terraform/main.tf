@@ -8,7 +8,7 @@
 # v1  - Création
 
 resource "openstack_compute_keypair_v2" "terraform" {
-  name       = "terraform"
+  name       = "terraform_jcu"
   public_key = "${file("${var.ssh_key_file}.pub")}"
 }
 
