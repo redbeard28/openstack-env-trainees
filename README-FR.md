@@ -1,3 +1,4 @@
+[![English](http://upload.wikimedia.org/wikipedia/commons/e/e1/Union_Jack_22x16.png "English")](README.md)
 <h1>
   <span>Création d'un environnement Openstack pour stagiaires</span>
   <a href='http://openstack-env-trainees.readthedocs.io/en/latest/?badge=latest'>
