@@ -1,3 +1,5 @@
+[![Français](http://upload.wikimedia.org/wikipedia/commons/1/14/Flag_of_france.png "Française")](README-FR.md)
+
 <h1>
   <span>Create an OpenStack env for my trainees</span>
   <a href='http://openstack-env-trainees.readthedocs.io/en/latest/?badge=latest'>
